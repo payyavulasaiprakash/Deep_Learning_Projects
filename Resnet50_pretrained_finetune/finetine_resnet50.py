@@ -119,3 +119,6 @@ plt.xlabel("Epoch #")
 plt.ylabel("Loss/Accuracy")
 plt.legend(loc="lower left")
 plt.savefig("finetune_resnet50.jpg")
+
+print('Training_accuracy: ',history.history["accuracy"])
+print('Testing_accuracy: ',history.history["val_accuracy"])

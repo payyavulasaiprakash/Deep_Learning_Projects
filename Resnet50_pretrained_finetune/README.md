@@ -31,3 +31,6 @@ Change the hyperparameters as per your requirement.
 Step7:
 
 run python finetine_resnet50.py
+
+
+The model in output_models_finetune trained with batch size = 32 , learning rate = 0.001, epoch = 10
