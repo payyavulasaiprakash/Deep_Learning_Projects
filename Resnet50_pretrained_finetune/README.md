@@ -16,13 +16,15 @@ Follow the folder structure same as cats_dogs_data_set_sample folder
 
 Step5:
 
-change the paths for both training and test data
+change the paths for both training and test data, name of plot 
 
 train_dataset_path - training data path
 
 test_dataset_path - testing data path
 
 save_model_to - path to save trained model
+
+plot_image_name - name for saving the plot image
 
 Step6:
 
@@ -33,4 +35,4 @@ Step7:
 run python finetine_resnet50.py
 
 
-The model in output_models_finetune trained with batch size = 32 , learning rate = 0.001, epoch = 10
+The model in output_models_finetune trained with batch size = 32 , learning rate = 0.001, epoch = 10, image_input_shape = 224,224,3

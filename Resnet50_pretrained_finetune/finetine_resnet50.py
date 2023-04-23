@@ -24,24 +24,24 @@ def resnet50_finetune(shape,classes):
     head_model = Dropout(0.6)(head_model)
     head_model = Dense(classes, activation="softmax")(head_model)
     final_model = Model(inputs = pretrained_resnet_architechture.input, outputs = head_model)
-    #transfer learning
+    #Freezing the layers
     for layer in pretrained_resnet_architechture.layers:
 	    layer.trainable = False
     return final_model
 
 
-train_dataset_path=os.path.join('cats_dogs_data_set_sample','train')
-test_dataset_path=os.path.join('cats_dogs_data_set_sample','test')
-
-learning_rate=0.001
-batch_size=32
-epochs=10
-
+train_dataset_path = os.path.join('cats_dogs_data_set_sample','train')
+test_dataset_path = os.path.join('cats_dogs_data_set_sample','test')
+plot_image_name = "finetune_resnet50.jpg"
+learning_rate = 0.001
+batch_size = 32
+epochs = 10
+ 
 train_image_paths = list(paths.list_images(train_dataset_path))
 test_image_paths = list(paths.list_images(test_dataset_path))
 
-total_training_images=len(train_image_paths)
-total_testing_images=len(test_image_paths)
+total_training_images = len(train_image_paths)
+total_testing_images = len(test_image_paths)
 
 train_Augmentor = ImageDataGenerator(
 	rotation_range=25,
@@ -119,7 +119,7 @@ plt.title("Loss and Accuracy on training and testing Dataset")
 plt.xlabel("Epoch #")
 plt.ylabel("Loss/Accuracy")
 plt.legend(loc="lower left")
-plt.savefig("finetune_resnet50.jpg")
+plt.savefig(plot_image_name)
 
 print('Training_accuracy: ',history.history["accuracy"])
 print('Testing_accuracy: ',history.history["val_accuracy"])
