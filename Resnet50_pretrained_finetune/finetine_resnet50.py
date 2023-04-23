@@ -24,6 +24,7 @@ def resnet50_finetune(shape,classes):
     head_model = Dropout(0.6)(head_model)
     head_model = Dense(classes, activation="softmax")(head_model)
     final_model = Model(inputs = pretrained_resnet_architechture.input, outputs = head_model)
+    #transfer learning
     for layer in pretrained_resnet_architechture.layers:
 	    layer.trainable = False
     return final_model
