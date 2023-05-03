@@ -115,6 +115,8 @@ for image_name in images_list:
     cv2.imwrite(des_image_path, image)
 
 
+    
+    #For YOLO it is difficult to detect object if they are small in size and when objects are close to each other, as it divides image into S*S grid and in each grid cell it predicts only single object.
 
 
 
