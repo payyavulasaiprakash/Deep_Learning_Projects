@@ -122,7 +122,7 @@ def generate_csv(detected, folder, out_file, model_name):
     for x in detected:
         _csv = ','.join(x)
         csv = csv + _csv + '\n'
-    save_text('output_csvs_folders_vit_on_unified_data/{}/{}_{}.csv'.format(out_file,model_name,folder_name), csv)
+    save_text('output_csvs_folders/{}/{}_{}.csv'.format(out_file,model_name,folder_name), csv)
 
 def main(args):
     models_folder = args.models_folder
