@@ -1,0 +1,1 @@
+KERAS_BACKEND=tensorflow python3  demo_FSANET_static_image_with_no_fd.py
