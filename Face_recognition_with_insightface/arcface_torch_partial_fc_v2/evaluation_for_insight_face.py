@@ -110,10 +110,7 @@ def compare(folder, out_file, model_name, weight):
                 detected_scores.append([sub_folder_name, str(cosine), str(_time_compare)])
             except Exception as e:
                 print(f"Error processing future for folder {sub_folder_name}: {e}")
-    print('\nGenerating CSV')
     generate_csv(detected_scores, folder, out_file, model_name)
-    print('CSV generation done\n')
-    print('Total sample pairs processed:', len(detected_scores))
 
 
 def generate_csv(detected, folder, out_file, model_name):
