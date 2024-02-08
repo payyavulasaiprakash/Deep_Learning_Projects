@@ -122,9 +122,9 @@ def generate_csv(detected, folder, out_file, model_name):
     save_text('output_csvs_folders/{}/{}_{}.csv'.format(out_file,model_name,folder_name), csv)
 
 def main(args):
-    models_folder = args.models_folder
-    test_data_folders = args.test_data_folders
-    output_folder = args.output_folder
+    models_folder = args.models
+    data_folders = args.data_folders
+    output_folder = args.output
     test_during_training = args.test_during_training
     
     all_model_paths = sorted(glob('{}/*.pt'.format(models_folder)),reverse=True)
@@ -150,8 +150,8 @@ def main(args):
                 model = torch.nn.DataParallel(net)
                 model.eval()
                 
-            all_sub_folder_paths = [sub_folder.path for sub_folder in os.scandir(args.test_data_folders) if sub_folder.is_dir() ]
-            for sub_folder_path in all_sub_folder_paths: 
+            sub_folder_paths = [sub_folder.path for sub_folder in os.scandir(data_folders) if sub_folder.is_dir() ]
+            for sub_folder_path in sub_folder_paths: 
                 print(sub_folder_path)
                 compare(sub_folder_path, output_folder, model_name,net)
 
