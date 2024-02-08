@@ -16,7 +16,7 @@ os.environ["CUDA_VISIBLE_DEVICES"]="1"
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
 # device = 'cpu'
 
-def face_pairs_fun(folder):#modfied code
+def face_pairs_fun(folder):
     face_pairs = []
     all_dirs = glob(folder+'/*')
     all_dirs.sort()
