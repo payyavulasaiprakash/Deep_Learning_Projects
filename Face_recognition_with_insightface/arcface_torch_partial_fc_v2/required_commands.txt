@@ -1,0 +1,26 @@
+# 0) Dependencies installation
+pip install opencv-python
+apt-get update
+apt-get install ffmpeg libsm6 libxext6  -y
+
+
+# 1) create train.lst using follow command
+python -m mxnet.tools.im2rec --list --recursive test test_cropped
+python -m mxnet.tools.im2rec --list --recursive train train_cropped
+python -m mxnet.tools.im2rec --list --recursive train_v2 train_cropped_v2
+
+# 2) create train.rec and train.idx using train.lst using following command
+python -m mxnet.tools.im2rec --num-thread 16 --quality 100 test test_cropped
+python -m mxnet.tools.im2rec --num-thread 16 --quality 100 train train_cropped
+python -m mxnet.tools.im2rec --num-thread 16 --quality 100 train_v2 train_cropped_v2
+
+python train_v2.py configs/ms1mv3_r50_onegpu #WF42M-PFC-0.3
+wf42m_pfc02_vit_h #WF42M-PFC-0.2
+wf42m_pfc02_r100 #WF42M-PFC-0.2	
+Datasets	Backbone(bs)	FLOPs	MFR-ALL	IJB-C(1E-4)	IJB-C(1E-5)
+WF42M-PFC-0.3	VIT-T(384*64)	1.5	92.24	97.31	95.97	~35000	click me
+WF42M-PFC-0.3	VIT-S(384*64)	5.7	95.87	97.73	96.57	~25000	click me
+WF42M-PFC-0.3	VIT-B(384*64)   11.4	97.42	97.90	97.04
+
+#dataset link
+https://onedrive.live.com/?authkey=%21AFZjr283nwZHqbA&id=4A83B6B633B029CC%215593&cid=4A83B6B633B029CC
