@@ -161,18 +161,13 @@ def main(args):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Face Comparison eval')
-    parser.add_argument('--test_data_folders', type=str, required=True,
-                        help='Folder with subfolders of face pair')
-    parser.add_argument('--output_folder', type=str, required=True,
-                        help='Output CSV filename without .csv extension')
-    parser.add_argument('--all_thresholds', type=str, required=False, default=50.0,
-                        help='Threshold for face comparison, higer means better match, default value is 50.0')
+    parser.add_argument('--data_folders', type=str, required=True,
+                        help='main folder path, should consists of fake and real as sub folders')
+    parser.add_argument('--output', type=str, required=True)
     parser.add_argument('--test_during_training', type=str, required=False, default=False,
-                        help='test_during_training')
-    parser.add_argument('--use_gpu', type=bool, required=False, default=True,
-                        help='Whether to use GPU or not')
-    parser.add_argument('--models_folder', type=str, required=True, default='h.h5',
-                        help='Model file to load')
+                        hlp='test_during_training')
+    parser.add_argument('--models', type=str, required=True, default='h.h5',
+                        help='models folder path')
     args = parser.parse_args()
     main(args)
 
